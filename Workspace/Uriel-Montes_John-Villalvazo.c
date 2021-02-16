@@ -6,6 +6,17 @@ Authors:
 "Decode.c" - Oringal name
 */
 
+#include <stdio.h>
 
+int main(){
 
+    int code;
 
+    printf("Enter an instruction in machine code:\n");
+
+    scanf("%d", &code);
+
+    printf("You entered: %d\n", code);
+
+    return 0;
+}
