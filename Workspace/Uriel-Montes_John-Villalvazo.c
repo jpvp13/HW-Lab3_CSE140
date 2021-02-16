@@ -10,13 +10,19 @@ Authors:
 
 int main(){
 
-    int code;
+    int code[32];
+    int num;
 
-    printf("Enter an instruction in machine code:\n");
-
-    scanf("%d", &code);
-
-    printf("You entered: %d\n", code);
+    printf("Enter an instruction in machine code one bit at a time:\n");
+    for (int i = 0; i < 32; i++){
+        scanf("%d", &num);
+        code[i] = num;
+    }
+    printf("You entered: ");
+    for (int i = 0; i < 32; i++){
+        printf("%d", code[i]);
+    }
+    printf("\n");
 
     return 0;
 }
