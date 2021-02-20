@@ -30,7 +30,7 @@ int Rtype(int code[]){              //Uriel Montes
     }
 }
 
-// int Itype(int code[]){      //John Villalvazo
+int Itype(int code[]){      //John Villalvazo
     /*
     addi    001000  done
     addui   001001
@@ -58,14 +58,16 @@ int Rtype(int code[]){              //Uriel Montes
 
 //   int i = 0;
 
-//    if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
-//         printf("Instruction type:I\n");
-//         printf("Operation (Opcode): %d,%d,%d,%d,%d,%d\n", code[0],code[1],code[2],code[3],code[4],code[5]);
-//         printf("Rs: %d,%d,%d,%d,%d\n", code[6],code[7],code[8],code[9],code[10]);
-//         printf("Rt: %d,%d,%d,%d,%d\n", code[11],code[12],code[13],code[14],code[15]);
-//         printf("Immediate: %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n", code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30], code[31]);
+//00100000100001010000000000000000
 
-//    } //else 
+   if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+        printf("Instruction type:I\n");
+        printf("Operation (Opcode): %d,%d,%d,%d,%d,%d\n", code[0],code[1],code[2],code[3],code[4],code[5]);
+        printf("Rs: %d,%d,%d,%d,%d\n", code[6],code[7],code[8],code[9],code[10]);
+        printf("Rt: %d,%d,%d,%d,%d\n", code[11],code[12],code[13],code[14],code[15]);
+        printf("Immediate: %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n", code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30], code[31]);
+
+   } else {
 //    if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
 //         printf("Instruction type: I\n");
 //         printf("Operation (Opcode): \n");
@@ -75,8 +77,9 @@ int Rtype(int code[]){              //Uriel Montes
 //    }
 
 
-//     return 0;
-// }
+    return 0;
+   }
+}
 
 
 // int Jtype(int code[]){
@@ -88,17 +91,22 @@ int main(){
     int code[32];   //making space available
     char type;
 
+    char var[32];   //taking the instruction as a char then breaking it up into its individual numbers
+
 // user enters machine code
-    printf("Enter an instruction in machine code one bit at a time:\n");
+    printf("Enter an instruction in machine code:\n");
+    scanf("%s", var);   //reads number as a "word" then breaks it down to digits
+
     for (int i = 0; i < 32; i++){
-        scanf("%d ", &code[i]); //this will take the input from 1 line and still allow to take specific indcies 
+        code[i] = var[i] - '0';
+        //scanf("%d", &code[i]); //this will not actually work for a no space input
         
     }
     // printf("You entered: ");
     // for (int i = 0; i < 32; i++){
     //     printf("%d", code[i]);
     // }
-    // printf("\n");
+    printf("\n");
 
     Rtype(code);
     Itype(code);
