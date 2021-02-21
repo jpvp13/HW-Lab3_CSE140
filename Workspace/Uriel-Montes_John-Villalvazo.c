@@ -158,23 +158,23 @@ subu    10 0011 (funct)
 
 int Itype(int code[]){      //John Villalvazo
     /*
-    addi    001000  -
-    addui   001001  -
-    andi    001100  -
-    beq     000100  -
-    bne     000101  -
-    lbu     100100  -
-    lhu     100101  -
-    ll      110000  -
-    lui     001111  -
-    lw      100011  -
-    ori     001101  -
-    slti    001010  -
-    sltiu   001011  -
-    sb      101000  -
-    sc      111000  -
-    sh      101001  -
-    sw      101011  -
+    addi    001000  -8
+    addui   001001  -9
+    andi    001100  -12
+    beq     000100  -4
+    bne     000101  -5
+    lbu     100100  -36
+    lhu     100101  -37
+    ll      110000  -48
+    lui     001111  -15
+    lw      100011  -35
+    ori     001101  -13
+    slti    001010  -10
+    sltiu   001011  -11
+    sb      101000  -40
+    sc      111000  -56
+    sh      101001  -41
+    sw      101011  -43
     */
 
    /*
@@ -182,29 +182,7 @@ int Itype(int code[]){      //John Villalvazo
     rt = 2nd register source
    */
 
-//   int i = 0;
-
-//00100000100001010000000000000000
-    // const char* appended;
-    // appended = malloc(strlen(code)+1 +4 );
-    // for(int i = 6; i < 11; i++){
-    //     char x = code[i];
-    //     int num = x - '0';
-    //     strcpy(appended, x);
-    //     strcat(appended, code[i]);
-    //     // strcpy(value, const char num);
-
-    //     printf(appended);
-
-    //     }
-
-    /*
- 
-    Need to check code[6-10] for the register, trying to do it dynamically without hard coding to much, but it seems like we may need to do that
-    similar for Rt and Rd. Similarly to shamt and func. 
-
-
-    */
+//00100000100001010000000000000000 <- test machine code
 
 
    if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
@@ -339,8 +317,16 @@ int main(int argc, char** argv){
     }
     printf("\n");
 
-    Rtype(code);
-    Itype(code);
+    int opcode = SixConvert(code[0], code[1], code[2], code[3], code[4], code[5]);  //will check the Opcode for which type it is
+
+    if(opcode == 0){
+        Rtype(code);
+    } else if(opcode == 4 || opcode == 5 || opcode == 8 || opcode == 9 || opcode == 10 || opcode == 11 || opcode == 12 || opcode == 13 || opcode == 15 || 
+            opcode == 35 || opcode == 36 || opcode == 37 || opcode == 40 || opcode == 41 || opcode == 43 || opcode == 48 || opcode == 56 ){
+        Itype(code);
+    } else {
+        Jtype(code);
+    }
     // Jtype(code);
     
     // free(code);
