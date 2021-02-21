@@ -64,6 +64,64 @@ int SixConvert(int six, int five, int four, int three, int two, int one){
     return decimal;
 }
 
+int sixteenConverter(int sixteen, int fifthteen, int fourteen, int thirteen, int twelve, int eleven, int ten, int nine, int eight, int seven, int six, int five, int four, int three, int two, int one){
+    int decimal = 0;
+
+    if (sixteen == 1){
+        decimal = decimal + 32768;
+    }
+    if (fifthteen == 1){
+        decimal = decimal + 16384;
+    }
+    if (fourteen == 1){
+        decimal = decimal + 8192;
+    }
+    if (thirteen == 1){
+        decimal = decimal + 4096;
+    }
+    if (twelve == 1){
+        decimal = decimal + 2048;
+    }
+    if (eleven == 1){
+        decimal = decimal + 1024;
+    }
+    if (ten == 1){
+        decimal = decimal + 512;
+    }
+    if (nine == 1){
+        decimal = decimal + 256;
+    }
+    if (eight == 1){
+        decimal = decimal + 128;
+    }
+    if (seven == 1){
+        decimal = decimal + 64;
+    }
+    if (six == 1){
+        decimal = decimal + 32;
+    }
+    if (five == 1){
+        decimal = decimal + 16;
+    }
+    if (four == 1){
+        decimal = decimal + 8;
+    }
+    if (three == 1){
+        decimal = decimal + 4;
+    }
+    if (two == 1){
+        decimal = decimal + 2;
+    }
+    if (one == 1){
+        decimal = decimal + 1;
+    }
+    else{
+        decimal = decimal;
+    }
+
+    return decimal;
+}
+
 int operation(int funct){
     if (funct == 32){
         printf("Operation: add\n");
@@ -115,9 +173,6 @@ int operation(int funct){
     return 0;
 }
 
-// int I_Operations(int funct){
-//     if(funct == )
-// }
 
 int Rtype(int code[]){              //Uriel Montes
 /*
@@ -188,108 +243,233 @@ int Itype(int code[]){      //John Villalvazo
     rt = 2nd register source
    */
 
-//00100000100001010000000000000000 <- test machine code
+    //00100000100001010000000000000000 <- test machine code
+    int opcode = SixConvert(code[0], code[1], code[2], code[3], code[4], code[5]);
 
 
-
-
-   if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+    if (opcode == 8){
         printf("Instruction Type: I\n");
         printf("Operation (Opcode): addi\n");
-        
-        // printf("Rs: ");
-        // printf("Rt: %d,%d,%d,%d,%d\n", code[11],code[12],code[13],code[14],code[15]);
-        // printf("Immediate: %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n", code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30], code[31]);
 
-    } 
-    else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+
+    } else if (opcode == 9){
         printf("Instruction Type: I\n");
         printf("Operation (Opcode): addiu");
-        // printf("Instruction type: I\n");
-        // printf("Operation (Opcode): \n");
-        // printf("Rs: \n");
-        // printf("Rt: \n");
-        // printf("Immediate: \n");
-//    }
 
-    } 
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
 
-    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    } else if(opcode == 12){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): andi");
-    }
+        printf("Operation (Opcode): andi\n");
 
-    else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23], code[24], code[25], code[26], code[27], code[28], code[29], code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    } else if(opcode == 4){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): beq");
-    }
+        printf("Operation (Opcode): beq\n");
 
-    else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 5){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): bne");
-    }
+        printf("Operation (Opcode): bne\n");
 
-    else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 36){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): lbu");
-    }
+        printf("Operation (Opcode): lbu\n");
 
-    else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 37){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): lhu");
-    }
+        printf("Operation (Opcode): lhu\n");
 
-    else if (code[0] == 1 && code[1] == 1 && code[2] == 0 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 48){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): ll");
-    }
+        printf("Operation (Opcode): ll\n");
 
-    else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 1 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    } else if(opcode == 15){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): lui");
-    }
+        printf("Operation (Opcode): lui\n");
 
-    else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 35){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): lw");
-    }
+        printf("Operation (Opcode): lw\n");
 
-    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 13){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): ori");
-    }
+        printf("Operation (Opcode): ori\n");
 
-    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 0){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 10){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): slti");
-    }
+        printf("Operation (Opcode): slti\n");
 
-    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 11){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): sltiu");
-    }
+        printf("Operation (Opcode): sltiu\n");
 
-    else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 40){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): sb");
-    }
+        printf("Operation (Opcode): sb\n");
 
-    else if (code[0] == 1 && code[1] == 1 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 56){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): sc");
-    }
+        printf("Operation (Opcode): sc\n");
 
-    else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 41){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): sh");
-    }
+        printf("Operation (Opcode): sh\n");
 
-    else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    }else if(opcode == 43){
         printf("Instruction Type: I\n");
-        printf("Operation (Opcode): sw");
-    }
+        printf("Operation (Opcode): sw\n");
 
-    else {
+        int rs = FiveConvert(code[6], code[7], code[8],code[9],code[10]);
+        printf("Rs: %s (%s)\n", register_name[rs], register_number[rs]);
+
+        int rt = FiveConvert(code[11], code[12], code[13],code[14],code[15]);
+        printf("Rt: %s (%s)\n", register_name[rt], register_number[rt]);
+
+        int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
+        printf("Immediate: %d\n", immediate);
+
+    } else {
         //end
         return 0;
    }
