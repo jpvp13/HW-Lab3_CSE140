@@ -7,6 +7,7 @@ Authors:
 */
 
 #include <stdio.h>
+#include <string.h>
 
 int Rtype(int code[]){              //Uriel Montes
 // check the instruction type
@@ -32,23 +33,23 @@ int Rtype(int code[]){              //Uriel Montes
 
 int Itype(int code[]){      //John Villalvazo
     /*
-    addi    001000  done
-    addui   001001
-    andi    001100
-    beq     000100
-    bne     000101
-    lbu     100100
-    lhu     100101
-    ll      110000
-    lui     001111
-    lw      100011
-    ori     001101
-    slti    001010
-    sltiu   001011
-    sb      101000
-    sc      111000
-    sh      101001
-    sw      101011
+    addi    001000  -
+    addui   001001  -
+    andi    001100  -
+    beq     000100  -
+    bne     000101  -
+    lbu     100100  -
+    lhu     100101  -
+    ll      110000  -
+    lui     001111  -
+    lw      100011  -
+    ori     001101  -
+    slti    001010  -
+    sltiu   001011  -
+    sb      101000  -
+    sc      111000  -
+    sh      101001  -
+    sw      101011  -
     */
 
    /*
@@ -59,23 +60,112 @@ int Itype(int code[]){      //John Villalvazo
 //   int i = 0;
 
 //00100000100001010000000000000000
+    // const char* appended;
+    // appended = malloc(strlen(code)+1 +4 );
+    // for(int i = 6; i < 11; i++){
+    //     char x = code[i];
+    //     int num = x - '0';
+    //     strcpy(appended, x);
+    //     strcat(appended, code[i]);
+    //     // strcpy(value, const char num);
+
+    //     printf(appended);
+
+    //     }
+
+    /*
+ 
+    Need to check code[6-10] for the register, trying to do it dynamically without hard coding to much, but it seems like we may need to do that
+    similar for Rt and Rd. Similarly to shamt and func. 
+
+
+    */
+
+    printf("Instruction Type: I\n");
 
    if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
-        printf("Instruction type:I\n");
-        printf("Operation (Opcode): %d,%d,%d,%d,%d,%d\n", code[0],code[1],code[2],code[3],code[4],code[5]);
-        printf("Rs: %d,%d,%d,%d,%d\n", code[6],code[7],code[8],code[9],code[10]);
-        printf("Rt: %d,%d,%d,%d,%d\n", code[11],code[12],code[13],code[14],code[15]);
-        printf("Immediate: %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n", code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30], code[31]);
+       
+        printf("Operation (Opcode): addi\n");
+        
+        
+        // printf("Rs: ");
+        // printf("Rt: %d,%d,%d,%d,%d\n", code[11],code[12],code[13],code[14],code[15]);
+        // printf("Immediate: %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n", code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30], code[31]);
 
-   } else {
-//    if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
-//         printf("Instruction type: I\n");
-//         printf("Operation (Opcode): \n");
-//         printf("Rs: \n");
-//         printf("Rt: \n");
-//         printf("Immediate: \n");
+    } else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
+        
+        printf("Operation (Opcode): addiu");
+        // printf("Instruction type: I\n");
+        // printf("Operation (Opcode): \n");
+        // printf("Rs: \n");
+        // printf("Rt: \n");
+        // printf("Immediate: \n");
 //    }
 
+    } else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+
+        printf("Operation (Opcode): andi");
+
+    }else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+
+        printf("Operation (Opcode): beq");
+
+    }else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+
+        printf("Operation (Opcode): bne");
+
+    }else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+
+        printf("Operation (Opcode): lbu");
+
+    }else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+
+        printf("Operation (Opcode): lhu");
+
+    }else if (code[0] == 1 && code[1] == 1 && code[2] == 0 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+
+        printf("Operation (Opcode): ll");
+
+    }else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 1 && code[5] == 1){
+
+        printf("Operation (Opcode): lui");
+
+    }else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+
+        printf("Operation (Opcode): lw");
+
+    }else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+
+        printf("Operation (Opcode): ori");
+
+    }else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 0){
+
+        printf("Operation (Opcode): slti");
+
+
+    }else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+
+        printf("Operation (Opcode): sltiu");
+
+    }else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+
+        printf("Operation (Opcode): sb");
+
+    }else if (code[0] == 1 && code[1] == 1 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+
+        printf("Operation (Opcode): sc");
+
+    }else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
+
+        printf("Operation (Opcode): sh");
+
+    }else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+
+        printf("Operation (Opcode): sw");
+
+     }else {
+
+        //end
 
     return 0;
    }
@@ -86,7 +176,7 @@ int Itype(int code[]){      //John Villalvazo
 //     return 0;
 // }
 
-int main(){
+int main(int argc, char** argv){
 
     const char *register_number[32] = {"R0","R1","R2","R3","R4","R5","R6","R7","R8","R9","R10","R11","R12","R13","R14","R15","R16","R17","R18","R19","R20","R21","R22","R23","R24","R25","R26","R27","R28","R29","R30","R31"};
     const char *register_name[32] = {"zero","at","v0","v1","a0","a1","a2","a3","t0","t1","t2","t3","t4","t5","t6","t7","s0","s1","s2","s3","s4","s5","s6","s7","t8","t9","k0","k1","gp","sp","fp","ra"};
@@ -104,10 +194,8 @@ int main(){
         code[i] = var[i] - '0'; //convert the char into a digit
         
     }
-    // printf("You entered: ");
-    // for (int i = 0; i < 32; i++){
-    //     printf("%d", code[i]);
-    // }
+
+
     printf("\n");
 
     
