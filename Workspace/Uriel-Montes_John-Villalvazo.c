@@ -115,6 +115,10 @@ int operation(int funct){
     return 0;
 }
 
+// int I_Operations(int funct){
+//     if(funct == )
+// }
+
 int Rtype(int code[]){              //Uriel Montes
 /*
 add     10 0000 (funct)
@@ -185,6 +189,8 @@ int Itype(int code[]){      //John Villalvazo
    */
 
 //00100000100001010000000000000000 <- test machine code
+
+
 
 
    if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
@@ -299,14 +305,9 @@ jal     000010
     return 0;
 }
 
-// const char *register_number[32] = {"R0","R1","R2","R3","R4","R5","R6","R7","R8","R9","R10","R11","R12","R13","R14","R15","R16","R17","R18","R19","R20","R21","R22","R23","R24","R25","R26","R27","R28","R29","R30","R31"};
-// const char *register_name[32] = {"zero","at","v0","v1","a0","a1","a2","a3","t0","t1","t2","t3","t4","t5","t6","t7","s0","s1","s2","s3","s4","s5","s6","s7","t8","t9","k0","k1","gp","sp","fp","ra"};
 
 int main(int argc, char** argv){
 
-    // const char *register_number[32] = {"R0","R1","R2","R3","R4","R5","R6","R7","R8","R9","R10","R11","R12","R13","R14","R15","R16","R17","R18","R19","R20","R21","R22","R23","R24","R25","R26","R27","R28","R29","R30","R31"};
-    // const char *register_name[32] = {"zero","at","v0","v1","a0","a1","a2","a3","t0","t1","t2","t3","t4","t5","t6","t7","s0","s1","s2","s3","s4","s5","s6","s7","t8","t9","k0","k1","gp","sp","fp","ra"};
-    
     int code[32];   //making space available
     char type;
 
@@ -321,23 +322,11 @@ int main(int argc, char** argv){
     }
     printf("\n");
 
-<<<<<<< HEAD
-    int opcode = SixConvert(code[0], code[1], code[2], code[3], code[4], code[5]);  //will check the Opcode for which type it is
-
-    if(opcode == 0){
-        Rtype(code);
-    } else if(opcode == 4 || opcode == 5 || opcode == 8 || opcode == 9 || opcode == 10 || opcode == 11 || opcode == 12 || opcode == 13 || opcode == 15 || 
-            opcode == 35 || opcode == 36 || opcode == 37 || opcode == 40 || opcode == 41 || opcode == 43 || opcode == 48 || opcode == 56 ){
-        Itype(code);
-    } else {
-        Jtype(code);
-    }
-    // Jtype(code);
-=======
+    
     Rtype(code);
     Itype(code);
     Jtype(code);
->>>>>>> 9441c72d8f1ae94f47f4ff0c168f77c875831b40
+
     
     // free(code);
     return 0;
