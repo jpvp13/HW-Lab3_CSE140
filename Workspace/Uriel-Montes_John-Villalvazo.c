@@ -9,6 +9,109 @@ Authors:
 #include <stdio.h>
 #include <string.h>
 
+int FiveConvert(int five, int four, int three, int two, int one){
+    int decimal = 0;
+
+    if (five == 1){
+        decimal = decimal + 16;
+    }
+    if (four == 1){
+        decimal = decimal + 8;
+    }
+    if (three == 1){
+        decimal = decimal + 4;
+    }
+    if (two == 1){
+        decimal = decimal + 2;
+    }
+    if (one == 1){
+        decimal = decimal + 1;
+    }
+    else{
+        decimal = decimal;
+    }
+    return decimal;
+}
+
+int SixConvert(int six, int five, int four, int three, int two, int one){
+    int decimal = 0;
+
+    if (six == 1){
+        decimal = decimal + 32;
+    }
+    if (five == 1){
+        decimal = decimal + 16;
+    }
+    if (four == 1){
+        decimal = decimal + 8;
+    }
+    if (three == 1){
+        decimal = decimal + 4;
+    }
+    if (two == 1){
+        decimal = decimal + 2;
+    }
+    if (one == 1){
+        decimal = decimal + 1;
+    }
+    else{
+        decimal = decimal;
+    }
+
+    return decimal;
+}
+
+int operation(int funct){
+    if (funct == 32){
+        printf("Operation: add\n");
+    }
+
+    else if (funct == 33){  //addu operation
+        printf("Operation: addu\n");
+    }
+
+    else if (funct == 36){    //and operation
+        printf("Operation: and\n");
+    }
+
+    else if (funct == 8){      //jr operation
+        printf("Operation: jr\n");
+    }
+
+    else if (funct == 39){      //nor operation
+        printf("Operation: nor\n");
+    }
+
+    else if (funct == 37){      //or operation
+        printf("Operation: or\n"); 
+    }
+
+    else if (funct == 42){      //slt operation
+        printf("Operation: slt\n"); 
+    }
+
+    else if (funct == 43){      //sltu operation
+        printf("Operation: sltu\n"); 
+    }
+
+    else if (funct == 0){      //sll operation
+        printf("Operation: sll\n"); 
+    }
+
+    else if (funct == 2){      //srl operation
+        printf("Operation: srl\n"); 
+    }
+
+    else if (funct == 34){      //sub operation
+        printf("Operation: sub\n"); 
+    }
+
+    else if (funct == 35){      //subu operation
+        printf("Operation: subu\n"); 
+    }
+    return 0;
+}
+
 int Rtype(int code[]){              //Uriel Montes
 /*
 add     10 0000 (funct)
@@ -19,8 +122,8 @@ nor     10 0111 (funct)
 or      10 0101 (funct)
 slt     10 1010 (funct)
 sltu    10 1011 (funct)
-sll     00 0000 (funct)
-srl     00 0010 (funct)
+sll     00 0000 (funct) also uses shamt
+srl     00 0010 (funct) also uses shamt
 sub     10 0010 (funct)
 subu    10 0011 (funct)
 */
@@ -32,21 +135,20 @@ subu    10 0011 (funct)
 // check Rd
 // check Shamt
 // check Funct
-    if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+    int opcode = SixConvert(code[0], code[1], code[2], code[3], code[4], code[5]);
+
+    if (opcode == 0){  // checking if rtype or not
         printf("Instruction type: R\n");
 
-        if (code[] == && code[] == && code[] == && code[] == && code[] == && code[] == )
-
-        printf("Operation: \n");
-        printf("Rs: \n");
-        printf("Rt: \n");
-        printf("Rd: \n");
-        printf("Shamt: \n");
-        printf("Funct: \n");
-    }
-
-    else if(code[]){
-
+        int funct = SixConvert(code[26], code[27], code[28], code[29], code[30], code[31]);
+        operation(funct);
+       
+        // printf("Rs: \n");
+        // printf("Rt: \n");
+        // printf("Rd: \n");
+        // printf("Shamt: \n");
+  
+        printf("Funct: %d\n", funct);
     }
 
     else{
@@ -246,5 +348,5 @@ int main(int argc, char** argv){
 }
 
 /*  TEST CASE machine code
-
+00000010001101110010110000100000 <- add
 */
