@@ -10,6 +10,21 @@ Authors:
 #include <string.h>
 
 int Rtype(int code[]){              //Uriel Montes
+/*
+add     10 0000 (funct)
+addu    10 0001 (funct)
+and     10 0100 (funct)
+jr      00 1000 (funct)
+nor     10 0111 (funct)
+or      10 0101 (funct)
+slt     10 1010 (funct)
+sltu    10 1011 (funct)
+sll     00 0000 (funct)
+srl     00 0010 (funct)
+sub     10 0010 (funct)
+subu    10 0011 (funct)
+*/
+
 // check the instruction type
 // check what operation it is
 // check Rs
@@ -19,6 +34,9 @@ int Rtype(int code[]){              //Uriel Montes
 // check Funct
     if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 0 && code[4] == 0 && code[5] == 0){
         printf("Instruction type: R\n");
+
+        if (code[] == && code[] == && code[] == && code[] == && code[] == && code[] == )
+
         printf("Operation: \n");
         printf("Rs: \n");
         printf("Rt: \n");
@@ -26,6 +44,11 @@ int Rtype(int code[]){              //Uriel Montes
         printf("Shamt: \n");
         printf("Funct: \n");
     }
+
+    else if(code[]){
+
+    }
+
     else{
         return 0;
     }
@@ -81,19 +104,18 @@ int Itype(int code[]){      //John Villalvazo
 
     */
 
-    printf("Instruction Type: I\n");
 
    if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
-       
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): addi\n");
-        
         
         // printf("Rs: ");
         // printf("Rt: %d,%d,%d,%d,%d\n", code[11],code[12],code[13],code[14],code[15]);
         // printf("Immediate: %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n", code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30], code[31]);
 
-    } else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
-        
+    } 
+    else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): addiu");
         // printf("Instruction type: I\n");
         // printf("Operation (Opcode): \n");
@@ -102,79 +124,98 @@ int Itype(int code[]){      //John Villalvazo
         // printf("Immediate: \n");
 //    }
 
-    } else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+    } 
 
+    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): andi");
+    }
 
-    }else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
-
+    else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): beq");
+    }
 
-    }else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
-
+    else if (code[0] == 0 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): bne");
+    }
 
-    }else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
-
+    else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 0){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): lbu");
+    }
 
-    }else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
-
+    else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): lhu");
+    }
 
-    }else if (code[0] == 1 && code[1] == 1 && code[2] == 0 && code[3] == 0 && code[4] == 0 && code[5] == 0){
-
+    else if (code[0] == 1 && code[1] == 1 && code[2] == 0 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): ll");
+    }
 
-    }else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 1 && code[5] == 1){
-
+    else if(code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 1 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): lui");
+    }
 
-    }else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 0 && code[4] == 1 && code[5] == 1){
-
+    else if (code[0] == 1 && code[1] == 0 && code[2] == 0 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): lw");
+    }
 
-    }else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 1){
-
+    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 1 && code[4] == 0 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): ori");
+    }
 
-    }else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 0){
-
+    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 0){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): slti");
+    }
 
-
-    }else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
-
+    else if (code[0] == 0 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): sltiu");
+    }
 
-    }else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
-
+    else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): sb");
+    }
 
-    }else if (code[0] == 1 && code[1] == 1 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
-
+    else if (code[0] == 1 && code[1] == 1 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 0){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): sc");
+    }
 
-    }else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
-
+    else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 0 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): sh");
+    }
 
-    }else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
-
+    else if (code[0] == 1 && code[1] == 0 && code[2] == 1 && code[3] == 0 && code[4] == 1 && code[5] == 1){
+        printf("Instruction Type: I\n");
         printf("Operation (Opcode): sw");
+    }
 
-     }else {
-
+    else {
         //end
-
-    return 0;
+        return 0;
    }
 }
 
 
-// int Jtype(int code[]){
-//     return 0;
-// }
+int Jtype(int code[]){
+/*
+j       000010
+jal     000010
+*/
+
+    return 0;
+}
 
 int main(int argc, char** argv){
 
@@ -194,11 +235,7 @@ int main(int argc, char** argv){
         code[i] = var[i] - '0'; //convert the char into a digit
         
     }
-
-
     printf("\n");
-
-    
 
     Rtype(code);
     Itype(code);
@@ -207,3 +244,7 @@ int main(int argc, char** argv){
     // free(code);
     return 0;
 }
+
+/*  TEST CASE machine code
+
+*/
