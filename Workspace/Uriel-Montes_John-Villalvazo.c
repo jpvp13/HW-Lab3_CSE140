@@ -121,6 +121,93 @@ int sixteenConverter(int sixteen, int fifthteen, int fourteen, int thirteen, int
 
     return decimal;
 }
+int twosixConverter(int twentysix, int twentyfive, int twentyfour, int twentythree, int twentytwo, int twentyone, int twenty, int nineteen, int eightteen, int seventeen, int sixteen, int fifthteen, int fourteen, int thirteen, int twelve, int eleven, int ten, int nine, int eight, int seven, int six, int five, int four, int three, int two, int one){
+    
+    int decimal = 0;
+
+    if (twentysix == 1){
+        decimal = decimal + 33554432;
+    }
+    if (twentyfive == 1){
+        decimal = decimal + 16777216;
+    } 
+    if (twentyfour == 1){
+        decimal = decimal + 8388608;
+    } 
+    if (twentythree == 1){
+        decimal = decimal + 4194304;
+    } 
+    if (twentytwo == 1){
+        decimal = decimal + 2097152;
+    } 
+    if (twentyone == 1){
+        decimal = decimal + 1048576;
+    } 
+    if (twenty == 1){
+        decimal = decimal + 524288;
+    } 
+    if (nineteen == 1){
+        decimal = decimal + 262144;
+    } 
+    if (eightteen == 1){
+        decimal = decimal + 131072;
+    } 
+    if (seventeen == 1){
+        decimal = decimal + 65536;
+    } 
+    if (sixteen == 1){
+        decimal = decimal + 32768;
+    } 
+    if (fifthteen == 1){
+        decimal = decimal + 16384;
+    } 
+    if (fourteen == 1){
+        decimal = decimal + 8192;
+    } 
+    if (thirteen == 1){
+        decimal = decimal + 4096;
+    } 
+    if (twelve == 1){
+        decimal = decimal + 2048;
+    } 
+    if (eleven == 1){
+        decimal = decimal + 1024;
+    } 
+    if (ten == 1){
+        decimal = decimal + 512;
+    } 
+    if (nine == 1){
+        decimal = decimal + 256;
+    } 
+    if (eight == 1){
+        decimal = decimal + 128;
+    } 
+    if (seven == 1){
+        decimal = decimal + 64;
+    } 
+    if (six == 1){
+        decimal = decimal + 32;
+    } 
+    if (five == 1){
+        decimal = decimal + 16;
+    } 
+    if (four == 1){
+        decimal = decimal + 8;
+    } 
+    if (three == 1){
+        decimal = decimal + 4;
+    } 
+    if (two == 1){
+        decimal = decimal + 2;
+    } 
+    if (one == 1){
+        decimal = decimal + 1;
+    }
+    else{
+        decimal = decimal;
+    }
+    return decimal;
+}
 
 int operation(int funct){
     if (funct == 32){
@@ -246,7 +333,6 @@ int Itype(int code[]){      //John Villalvazo
     //00100000100001010000000000000000 <- test machine code
     int opcode = SixConvert(code[0], code[1], code[2], code[3], code[4], code[5]);
 
-
     if (opcode == 8){
         printf("Instruction Type: I\n");
         printf("Operation (Opcode): addi\n");
@@ -261,7 +347,7 @@ int Itype(int code[]){      //John Villalvazo
         printf("Immediate: %d\n", immediate);
 
 
-    } else if (opcode == 9){
+    }else if (opcode == 9){
         printf("Instruction Type: I\n");
         printf("Operation (Opcode): addiu");
 
@@ -274,7 +360,7 @@ int Itype(int code[]){      //John Villalvazo
         int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
         printf("Immediate: %d\n", immediate);
 
-    } else if(opcode == 12){
+    }else if(opcode == 12){
         printf("Instruction Type: I\n");
         printf("Operation (Opcode): andi\n");
 
@@ -287,7 +373,7 @@ int Itype(int code[]){      //John Villalvazo
         int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23], code[24], code[25], code[26], code[27], code[28], code[29], code[30], code[31]);
         printf("Immediate: %d\n", immediate);
 
-    } else if(opcode == 4){
+    }else if(opcode == 4){
         printf("Instruction Type: I\n");
         printf("Operation (Opcode): beq\n");
 
@@ -352,7 +438,7 @@ int Itype(int code[]){      //John Villalvazo
         int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
         printf("Immediate: %d\n", immediate);
 
-    } else if(opcode == 15){
+    }else if(opcode == 15){
         printf("Instruction Type: I\n");
         printf("Operation (Opcode): lui\n");
 
@@ -469,18 +555,38 @@ int Itype(int code[]){      //John Villalvazo
         int immediate = sixteenConverter(code[16], code[17], code[18],code[19],code[20],code[21], code[22], code[23],code[24],code[25],code[26], code[27], code[28],code[29],code[30], code[31]);
         printf("Immediate: %d\n", immediate);
 
-    } else {
-        //end
+    }else {
         return 0;
-   }
+    }
 }
 
 
-int Jtype(int code[]){
+int Jtype(int code[]){  //Uriel Montes
 /*
 j       000010
 jal     000010
 */
+    int opcode = SixConvert(code[0], code[1], code[2], code[3], code[4], code[5]);
+
+    if (opcode == 2){
+        printf("Instruction type: J\n");
+        printf("Operation: j\n");
+
+        int address = twosixConverter(code[6],code[7],code[8],code[9],code[10],code[11],code[12],code[13],code[14],code[15],code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30],code[31]);
+        printf("Address: %d\n", address);
+    }
+
+    else if (opcode == 3){
+        printf("Instruction type: J\n");
+        printf("Operation: jal\n");
+
+        int address = twosixConverter(code[6],code[7],code[8],code[9],code[10],code[11],code[12],code[13],code[14],code[15],code[16],code[17],code[18],code[19],code[20],code[21],code[22],code[23],code[24],code[25],code[26],code[27],code[28],code[29],code[30],code[31]);
+        printf("Address: %d\n", address);
+    }
+
+    else{
+        return 0;
+    }
 
     return 0;
 }
@@ -489,11 +595,9 @@ jal     000010
 int main(int argc, char** argv){
 
     int code[32];   //making space available
-    char type;
-
     char var[32];   //taking the instruction as a char then breaking it up into its individual numbers
 
-// user enters machine code
+    // user enters machine code
     printf("Enter an instruction in machine code:\n");
     scanf("%s", var);   //reads number as a "word" then breaks it down to digits
 
@@ -501,18 +605,18 @@ int main(int argc, char** argv){
         code[i] = var[i] - '0'; //convert the char into a digit
     }
     printf("\n");
-
     
     Rtype(code);
     Itype(code);
     Jtype(code);
 
-    
-    // free(code);
     return 0;
 }
 
 /*  TEST CASE machine code
 00000010001101110010110000100000 <- add
-00000001000010011000100000100000
+00000001000010011000100000100000 <- add
+00001000001010101010101101000101 <- j
+00001100001010101010101101000101 <- jal
+00110100001001000000000000000000 <- ori
 */
